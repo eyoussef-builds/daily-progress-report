@@ -235,6 +235,8 @@ def normalize(record, session, path, line, include_tools, redact_text=True):
         return None
     if not stamp or not isinstance(thread_id, str) or not thread_id or not isinstance(text, str) or not text.strip():
         return None
+    if text.lstrip().startswith("Message Type:") and "Task name:" in text and "Sender:" in text:
+        return None
     if kind == "user_message" and text.lstrip().startswith(INTERNAL_PREFIXES):
         return None
     # A fork's copied history is context, not new work in that fork.
@@ -384,7 +386,12 @@ def collect(root, day, zone, output=None, full_scan=False, catalog=None, now=Non
                         sid = p.get("id") or p.get("session_id") or session.get("id")
                         session.update({k: p[k] for k in ("cwd", "source", "thread_source") if k in p})
                         session["id"] = sid
-                        session.setdefault("created_at", p.get("timestamp"))
+                        # Resuming a chat can move the index creation time forward.
+                        # The original log still establishes its earlier start.
+                        known_start = instant(session.get("created_at"))
+                        log_start = instant(p.get("timestamp"))
+                        if log_start and (not known_start or log_start < known_start):
+                            session["created_at"] = p.get("timestamp")
                         session["parent_thread_id"] = parent_from_source(session.get("source"))
                         skip = session.get("thread_source") in {"guardian_review", "memory_consolidation"} or '"guardian"' in str(session.get("source", ""))
                         if sid:

@@ -50,7 +50,7 @@ Copy-Item -LiteralPath 'skills/daily-progress-report' -Destination $destParent -
 
 These locations/commands were checked against the linked official documentation on 2026-10-21. That is documentation verification, not a claim of end-to-end testing in all 15 agents. Versions and organization policies may differ. Reopen the session or reload skills if needed.
 
-**Compatibility boundary:** these agents can load the workflow according to their support. Evidence collection targets Codex. You need authorized Codex records/tools, Python for the helper, and image generation for both images. This is not a collector for every agent's own history and does not give a cloud session automatic access to your computer.
+**Compatibility boundary:** these agents can load the workflow according to their support. Native evidence collection targets Codex and local Claude Code. You need authorized records/tools, Python for the helpers, and image generation for both images. This is not a collector for every agent's own history and does not give a cloud session automatic access to your computer.
 
 ## 1. OpenAI Codex
 

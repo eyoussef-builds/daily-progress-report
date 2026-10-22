@@ -12,9 +12,9 @@ The package excludes the creator's personal profile, source conversations, real 
 
 Your installed agent uses its own tools, permissions and model/service settings. A Markdown skill is not a separate security boundary. Instructions or local helpers do not grant new account access.
 
-For Idea to MVP, your new product brief, research, preview and generated project files may contain your private business idea. Keep them in your own project and decide its repository visibility separately. The skill does not send them to this repository or to its author.
+For Daily Progress Report, authorized history is read to prepare your report. The Codex adapter opens its index read-only; the Claude Code adapter reads project JSONL and optionally whitelisted local session-title metadata. Neither reads Claude credentials, settings, browser cookies/databases, app caches, raw tool payloads or model thinking. Ordinary claude.ai chats and Cowork/cloud-only history are not automatically included. The combined collector does not modify source chat logs, and writes a new evidence folder. It contains no network-upload or telemetry code. It does not crawl unrelated apps or other users' accounts. The evidence can still contain private message text, titles, identifiers and paths. Its token-pattern redaction does not anonymize everything.
 
-For Daily Progress Report, authorized history is read to prepare your report. The local collector opens the index read-only, does not modify source chat logs, and writes a new evidence folder. It contains no network-upload or telemetry code. It does not crawl unrelated apps or other users' accounts. The evidence can still contain private message text, titles, identifiers and paths. Its token-pattern redaction does not anonymize everything.
+Provider labels and per-agent metrics are retained; shared projects/achievements need semantic reconciliation before sharing. Facebook/LinkedIn captions are drafts only.
 
 The model receives whatever evidence your agent reads into its context. Image-generation services receive the infographic prompt. Use only relevant, non-sensitive highlight facts there; do not include raw chats, credentials or private customer details. The provider's own processing/retention rules still apply. This repository does not promise that using a cloud model keeps data exclusively on your computer.
 

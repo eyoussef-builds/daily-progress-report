@@ -34,6 +34,37 @@ def meta(tid, stamp, source="cli", thread_source="user"):
 
 
 class ActivityTests(unittest.TestCase):
+    def test_resumed_index_timestamp_preserves_original_messages_and_usage(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            folder = root / "sessions"
+            folder.mkdir()
+            log = folder / ("rollout-2025-07-15T06-00-00-" + PARENT + ".jsonl")
+            records = [meta(PARENT, "2025-07-15T06:00:00Z"),
+                item("2025-07-15T06:10:00Z", "Original build delivered"),
+                record("token_usage_record", "2025-07-15T06:10:00Z", {
+                    "response_id": "original-response", "thread_id": PARENT,
+                    "usage": {"input_tokens": 100, "output_tokens": 20, "total_tokens": 120}})]
+            log.write_text("\n".join(json.dumps(r) for r in records))
+            conn = sqlite3.connect(root / "state_1.sqlite")
+            conn.execute("CREATE TABLE threads (id TEXT, created_at INTEGER, rollout_path TEXT)")
+            later = int(datetime(2025, 7, 15, 8, tzinfo=timezone.utc).timestamp())
+            conn.execute("INSERT INTO threads VALUES (?,?,?)", (PARENT, later, str(log)))
+            conn.commit()
+            conn.close()
+            result, output = ca.collect(root, "2025-07-15", "UTC", full_scan=True, now=NOW)
+            self.assertEqual(result["metrics"]["messages"]["total_visible"], 1)
+            self.assertEqual(result["metrics"]["tokens"]["totals"]["total_tokens"], 120)
+            shutil.rmtree(output)
+
+    def test_coordination_wrappers_are_not_visible_messages(self):
+        wrapper = "Message Type: NEW_TASK\nTask name: /root/research\nSender: /root\nPayload:"
+        self.assertIsNone(ca.normalize(item("2025-07-15T06:00:00Z", wrapper),
+            {"id": PARENT}, Path("fixture"), 1, False))
+        visible = ca.normalize(item("2025-07-15T06:00:00Z", "Research delivered"),
+            {"id": CHILD}, Path("fixture"), 1, False)
+        self.assertEqual(visible["text"], "Research delivered")
+
     def test_token_records_are_deduplicated_not_cumulative_or_double_counted(self):
         records={};session={'id':PARENT}
         usage={'input_tokens':1000,'cached_input_tokens':800,'output_tokens':100,'reasoning_output_tokens':40,'total_tokens':1100}

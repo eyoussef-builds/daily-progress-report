@@ -2,7 +2,7 @@
 
 ## English
 
-Your work is spread across Codex chats. Daily Progress Report brings it together: a timestamped timeline, achievements by project, verified counts where available, and matching English and Arabic infographics. Start by asking what you achieved today.
+Your work is spread across Codex and local Claude Code chats. Daily Progress Report brings it together: a source-labeled timeline, achievements by project, verified per-agent counts, Facebook/LinkedIn drafts, and matching English and Arabic infographics. Start by asking what you achieved today.
 
 Get the skill and step-by-step agent installation guides:
 https://github.com/eyoussef-builds/daily-progress-report
@@ -11,7 +11,7 @@ https://github.com/eyoussef-builds/daily-progress-report
 
 ## العربية
 
-شغلك موزّع على محادثات Codex؟ مهارة Daily Progress Report تجمعه في تقرير واضح: تسلسل زمني، إنجازات حسب المشروع، أرقام موثوقة عند توفرها، وإنفوجرافيك بالإنجليزية والعربية. ابدأ بسؤال: ماذا أنجزنا اليوم؟
+شغلك موزّع على محادثات Codex وClaude Code المحلية؟ مهارة Daily Progress Report تجمعه في تقرير واضح: تسلسل زمني، إنجازات حسب المشروع، أرقام موثوقة لكل مساعد وبوستات فيسبوك ولينكدإن، وإنفوجرافيك بالإنجليزية والعربية. ابدأ بسؤال: ماذا أنجزنا اليوم؟
 
 المهارة ودليل التثبيت خطوة بخطوة:
 https://github.com/eyoussef-builds/daily-progress-report

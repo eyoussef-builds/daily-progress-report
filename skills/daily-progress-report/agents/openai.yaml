@@ -1,6 +1,6 @@
 interface:
   display_name: "Daily Progress Report"
   short_description: "Daily achievements, illustrated workflow, and verified counts"
-  default_prompt: "Use $daily-progress-report to inspect my accessible Codex chats, report today’s achievements and unfinished work, and end with English and Arabic infographics showing achievements, work streams and verified counts; keep unfinished work in the written report only."
+  default_prompt: "Use $daily-progress-report to inspect my accessible Codex and local Claude Code chats with separate source attribution, report today’s achievements and unfinished work, include ready-to-copy Facebook and LinkedIn captions, and end with English and Arabic infographics showing achievements, work streams and verified counts; keep unfinished work in the written report only."
 policy:
   allow_implicit_invocation: true

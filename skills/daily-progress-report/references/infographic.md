@@ -32,6 +32,8 @@ Add a readable end-of-day scale strip with verified project count, conversation-
 - **Messages:** deduplicated visible conversation messages, with user-side/assistant breakdown in the report. Include commentary if using the collector's default; disclose automation/handoff entries. Do not count tool calls, system text, model reasoning or repeated fork context as messages. Count support-agent exchanges separately if included.
 - **Tokens:** per-response recorded usage, deduplicated by response ID inside the local-date window. Label “recorded tokens” and disclose cached input/context processing. Do not add cumulative counters, cached-input subsets or reasoning subsets again. Do not infer tokens from character length, use lifetime totals as daily usage, convert to cost, or fabricate usage for remote sources without it. Use “not available” or clearly scoped partial coverage if necessary.
 
+For multi-agent reports, keep source labels on milestones/panels where needed and retain per-agent metric breakdowns in the written report. Normalize Claude’s separate cache-read/write input and Codex’s cached-input subset according to [source guidance](claude-source.md) before showing any combined total. Never count a shared project or deliverable twice.
+
 Token volume is a processing measure, not unique writing, useful output or quality. Huge cached-context counts need an explicit label; do not market them as billions of new words. Counts must use the same source scope and date as the report. Unavailable metrics should be omitted or marked unavailable, never replaced with plausible guesses.
 
 ## Generation and review

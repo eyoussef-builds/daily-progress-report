@@ -1,5 +1,7 @@
 # Source access and coverage
 
+Use `scripts/collect_daily.py` for the default combined local collection. This document describes Codex access; read [Claude source guidance](claude-source.md) for local Claude Code formats, scope, deduplication and token semantics. Keep sources separate in evidence and attribution, then reconcile actual projects and shared achievements in the report.
+
 ## App tools first
 
 Discover the available chat tools rather than assuming one host or API version. With the Codex app tools:
