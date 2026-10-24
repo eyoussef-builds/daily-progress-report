@@ -70,6 +70,10 @@ For a quiet day, keep the format short and say what evidence exists. “No recor
 
 Prefer stable chat/artifact links to scratch evidence paths in the user report. Render actual local file links with absolute paths. Do not create immutable public share links, publish, email or message the report unless explicitly asked. No recurring automation is implied by a request for a daily report; use scheduling tools only when the user separately requests a schedule.
 
+## Mandatory final review
+
+Before delivery, read and perform [the final review](references/final-review.md) on the report, captions and both actual infographics together. Reconcile dated achievements, source coverage, project grouping and metrics; inspect readability, Arabic/English agreement and privacy. Fix findings and recheck affected outputs, retaining concise private evidence. A successful collector or generated image file alone does not establish a correct, readable report; identify missing outputs or coverage honestly.
+
 ## Verification of the helper
 
 The standard-library fixture suite exercises calendar/DST boundaries, midnight filtering, legacy/current schemas, old resumed chats, archives, child attribution, replay/fork deduplication, compressed logs, redaction and read-only history access:
